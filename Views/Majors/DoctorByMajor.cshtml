@@ -1,0 +1,178 @@
+﻿@model IEnumerable<Doctor_Booking.Models.User>
+@{
+    ViewBag.Title = "DoctorByMajor";
+
+}
+<style>
+    .header {
+        padding: 30px 0;
+        display: flex;
+        justify-content: center;
+        background: radial-gradient(circle,#2171af85,#0094ff);
+        color: #fff
+    }
+
+        .header a {
+            text-decoration: none;
+            color: #fff
+        }
+
+        .header .header-container {
+            width: 90%;
+            font-size: 24px;
+        }
+
+        .body{
+            display:flex;
+            justify-content:center;
+        }
+
+        .body .media-container{
+            width:90%
+        }
+
+        .body .list-media .media-item{
+            display:flex;
+            justify-content:center;
+        }
+
+        .body .list-media {
+            margin:36px 0 48px;
+        }
+
+        .body .list-media img {
+            height: 150px;
+            width: 150px;
+            object-fit: contain;
+        }
+
+            .body .list-media .media-img {
+               display: flex;
+                flex-direction: column;
+            
+            }
+
+            .body .list-media .offical {
+                background: #427bfa;
+                padding: 5px;
+                align-items: center;
+                border-radius: 12px;
+                color: #fff;
+                text-align: center;
+                margin-top:12px;
+            }
+
+            .body .media-item .media-info {
+                padding-left: 32px;
+                min-width:800px;
+            }
+
+            .body .media-item .name-doctor {
+                border-bottom: 1px solid #ccc;
+                padding-bottom:8px;
+            }
+
+        .body .media-item .media-info .info-list{
+            display:flex;
+            padding-top:8px;
+        }
+
+            .body .media-item .media-info .info-list ul{
+                padding-right:12px;
+                border-right:1px dashed #ccc;
+            }
+
+            .body .media-item .media-info .info-list ul li{
+                padding:4px 0;
+            }
+                .body .media-item .media-info .info-list ul li i{
+                    padding:4px;
+                }
+            .body .media-item .media-info .info-list .description  {
+                padding:0 12px;
+                display:flex;
+                flex-direction: column;
+            }
+                .body .media-item .media-info .info-list .description p{
+                    padding:4px;
+                }
+                .body .media-item .media-info .info-list .description a {
+                    padding: 4px;
+                    margin-top: auto;
+                    background: #2171af;
+                    display: inline;
+                    color: #fff;
+                    border-radius: 3px;
+                    text-align: center;
+                    max-width:300px;
+                }
+              
+</style>
+
+<body>
+    <div class="header">
+        <div class="header-container">
+            <a href="@Url.Action("Index","Home")">Home</a>
+            »
+            <span>@ViewBag.MajorName</span>
+
+        </div>
+    </div>
+    <div class="body">
+        <div class="media-container">
+            <div class="row">
+                <div class="">
+                    @foreach (var item in Model)
+                    {
+                <div class="list-media">
+                    <div class="media-item">
+                        <div class="media-img">
+                            <a href="@Url.Action("Details", "Users", new { id = item.ID})">
+                                <img src="~/Content/Image/user-avatar/@item.ImagePath" class="rounded-circle" />
+                            </a>
+                            <span class="offical">
+                                <i class="fa fa-check mr5"></i>
+                                Official doctor
+                            </span>
+                        </div>
+                        <div class="media-info">
+                            <div class="name-doctor">
+                                <h3>
+                                    <a href="">@item.Fullname</a>
+                                </h3>
+                            </div>
+                            <div class="info-list">
+                                <ul>
+                                    <li>
+                                        <i class="fa fa-stethoscope"></i>
+                                        <span>@ViewBag.MajorName</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-bookmark"></i>
+                                        <span>Update...</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        <span>@item.Email</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        <span>@item.Phone</span>
+                                    </li>
+
+                                </ul>
+                                <div class="description">
+                                    <p>@item.Description</p>
+                                    <a href="">Booking an appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>

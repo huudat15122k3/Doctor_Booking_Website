@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #header {
+            padding-top: 24px;
+        }
+
+        .header-wrapper .navbar {
+            justify-content: space-around;
+            border-bottom: 1px solid #77777745;
+            height: 8vh;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .modal-header {
+            justify-content: space-around;
+            border-bottom: 1px solid #77777745;
+        }
+
+        .hotline-box {
+            display: flex;
+        }
+
+        .hotline-header {
+            display: flex;
+            justify-content: space-evenly;
+            height: 50px;
+        }
+
+        .nav-ul {
+            display: flex;
+            width: 80%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+            .nav-ul .border-left {
+                border-left: 1px solid;
+                padding: 0 10%;
+            }
+
+        ul {
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .header-search {
+            border: 1px solid #8080802e;
+            padding: 8px 16px;
+            border-radius: 32px;
+            width: 150%;
+        }
+
+        .footer-register .container {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            max-width: 100%
+        }
+
+        .register-container {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .title-register {
+            display: flex;
+            align-items: center
+        }
+
+        .content {
+            padding: 16px 8px;
+        }
+
+        .footer-register {
+            background: -webkit-gradient(linear, left top, left bottom, from(rgba(72, 190, 230, .9))), url(https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/footer-1.jpeg);
+            background-size: cover;
+            margin-top: 32px;
+        }
+
+        .dev-register {
+            display: flex;
+            align-items: center;
+        }
+
+        .register-input {
+            width: 320px;
+        }
+
+        .input-res {
+            width: 90%;
+            border-radius: 25px;
+            padding: 8px 16px;
+            background: hsla(0, 0%, 100%, .25);
+            border: 1px solid #00000000;
+            height: 45px;
+            color: #ffffff;
+        }
+
+        .register-input input::placeholder {
+            color: #ffffff;
+        }
+
+        .register-btn {
+            background: #00379b;
+            color: #ffffff;
+            border-radius: 25px;
+            padding: 8px 16px;
+            border: 1px solid #000000;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #e5f7ff;
+            padding: 30px 0 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+            .footer .footer-container {
+                display: flex;
+                justify-content: space-between;
+                width: 90%;
+            }
+
+            .footer .footer-address-box {
+                padding: 12px;
+                background: #a8dbf3;
+                min-width: 33%
+            }
+
+            .footer .footer-address {
+                box-shadow: #a8dbf3;
+                background: linear-gradient(90deg, #3789c4, #68c0e6);
+                display: flex;
+                align-items: flex-end;
+                border-bottom: 1px solid #fff;
+                padding: 12px;
+            }
+
+        .footer-address .icon {
+            border: 1px solid #ffffff;
+            border-radius: 9999px;
+            height: 32px;
+            width: 32px;
+            text-align: center;
+        }
+
+        .footer-address h6 {
+            color: #ffffff;
+            padding-left: 8px;
+            text-transform: uppercase;
+        }
+
+        .footer-contact-title h3 {
+            color: #27519e;
+            text-transform: uppercase;
+            font-size: 16px;
+            border-bottom: 2px solid #48bee6;
+        }
+
+        .footer-social a {
+            height: 30px;
+            width: 30px;
+            display: inline-block;
+            border-radius: 50%;
+            text-align: center;
+            color: #48bee6;
+            background: #fff
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="">
+        <div class="header-wrapper">
+            <div class="modal-header">
+                <div>
+                    <a href="">
+                        <img src="https://bookingdoctor.vn/wp-content/uploads/2021/06/logo.png" height="40" width="130" />
+                    </a>
+                </div>
+                <div>
+                    <div class="header-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                        <input placeholder="Looking for a doctor..." style="border:none;outline:none; padding:0 16px;" />
+                    </div>
+                </div>
+                <div style="width:500px">
+                    <ul style="list-style-type:none">
+                        <li>
+                            <div class="hotline-header">
+                                <div class="hotline-box">
+                                    <img src="https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/clock.png" width="50" alt="" padding="5" />
+                                    <div>
+                                        <h3 style="font-size: 16px; font-family: Montserrat Bold; color: #48bee6; font-weight:bold">Monday - Friday</h3>
+                                        <p style="font-size: 14px; font-family: sans-serif">9AM - 9PM</p>
+                                    </div>
+                                </div>
+                                <div class="hotline-box">
+                                    <img src="https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/phone.png" width="50" alt="" padding="5" />
+                                    <div>
+                                        <h3 style="font-size: 16px; font-family: Montserrat Bold; color: #48bee6; font-weight: bold">0985 458 620</h3>
+                                        <p style="font-size: 14px; font-family: sans-serif">24/7 Book your doctor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar">
+                <ul class="navbar-brand nav-ul">
+
+                    <li style="padding-right:10%">
+                        <a href="@Url.Action("Index", "Home")">HOME</a>
+                    </li>
+                    <li class="border-left">
+                        <a href="@Url.Action("Index", "Majors")">MAJOR</a>
+                    </li>
+                    <li class="border-left">
+                        <a href="">APPOINTMENT</a>
+                    </li>
+                    <li class="border-left">
+                        <a href="@Url.Action("Contact", "Home")">CONTACT</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <div class="footer-register">
+        <div class="container">
+            <div class="register-container">
+                <div class="title-register">
+                    <div>
+                        <img src="https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/ico-mail.png" style="padding:16px" />
+                    </div>
+                    <div class="content">
+                        <div style="text-transform:uppercase;font-weight:bold ;font-size:18px;color:#ffffff">
+                            Subscribe to the newsletter
+                        </div>
+                        <div style="font-size: 13px; color: #ffffff">
+                            Leave your email address to receive medical information and special offers
+                        </div>
+                    </div>
+                </div>
+                <div class="dev-register">
+                    <div class="register-input">
+                        <input placeholder="Email address..." class="input-res" />
+                    </div>
+                    <div>
+                        <button type="button" class="register-btn">REGISTER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer-address-box">
+                    <div class="footer-address">
+                        <div class="icon">
+                            <img src="https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/ico-map.png" />
+                        </div>
+                        <h6>singapore</h6>
+                    </div>
+                    <div class="footer-address">
+                        <div class="icon">
+                            <img src="https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/ico-phone.png" />
+                        </div>
+                        <h6>0985 458 620</h6>
+                    </div>
+                    <div class="footer-address">
+                        <div class="icon">
+                            <img src="https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/ico-mail-2.png" />
+                        </div>
+                        <h6 style="text-transform:none">huudat15122k3@gmail.com</h6>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <div class="footer-contact-title">
+                        <h3>
+                            Quick Contact
+                        </h3>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Partnership Contact</li>
+                            <li>Contact</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="max-width:33%">
+                    <div class="footer-contact-title">
+                        <h3>
+                            Contact
+                        </h3>
+                    </div>
+                    <div class="footer-social">
+                        <img src="https://bookingdoctor.vn/wp-content/uploads/2021/05/logo-y-te-suc-khoe-benh-vien.jpg" width="60%" />
+                        <a href="">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-pinterest"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+

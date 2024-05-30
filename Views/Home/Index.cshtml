@@ -1,0 +1,482 @@
+﻿@using Doctor_Booking.Models
+@model IEnumerable<Doctor_Booking.Models.Major> 
+
+
+@{
+    ViewBag.Title = "Home Page";
+    List<User> users = ViewBag.User;
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+    .reponsive-img {
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .more-a {
+        padding: 8px 16px;
+        font-size: 16px;
+        color: #111111;
+        background: #80808024;
+        border-radius: 6px;
+    }
+
+    .specialties-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .home-title-container {
+        display: flex;
+        justify-content: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+
+    .home-title {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        margin: 32px 0;
+        border-bottom: 1px solid #77777745;
+    }
+
+        .home-title h3 {
+            border-bottom: 3px solid #48bee6;
+            padding: 0;
+            margin: 0;
+        }
+
+    .specialties-container {
+        font-family: Montserrat Bold
+    }
+
+    .carousel-container {
+        position: relative;
+        width: 100%;
+        margin: auto;
+    }
+
+    .carousel {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .specialties-container .row {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        transition: transform 0.5s ease-in-out;
+        
+    }
+
+        .specialties-container .row .major-container {
+            flex: 0 0 30%;
+        }
+
+        .specialties-container button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+    .specialties-container .prev-btn {
+        left: -28px        ;
+    }
+
+        .specialties-container .next-btn {
+            right:-40px;
+        }
+
+        .specialties-container .row h3 {
+            font-size: 28px;
+            font-family: Montserrat Light;
+            color: #111111;
+            padding: 6px
+        }
+
+    .row .rounded-circle {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+    }
+
+    .doctor-container {
+        background: #48bee6;
+    }
+
+        .doctor-container .home-title-container h3 {
+            color: #ffffff
+        }
+
+        .doctor-container .home-title {
+            border-bottom: 1px solid #ffffff
+        }
+
+            .doctor-container .home-title h3 {
+                border-bottom: 3px solid #ffffff;
+                padding: 0;
+                margin: 0;
+            }
+
+        .doctor-container .row {
+            justify-content: space-evenly
+        }
+
+        .doctor-container .stage {
+            display: flex;
+            justify-content: center;
+        }
+
+    .doctor-card {
+        margin: 16px;
+        text-align: center
+    }
+
+    .doctor-card h3 {
+        color:#111111;
+        font-size:24px;
+        margin:8px;
+    }
+
+        .doctor-card p {
+            color: #333;
+            font-size: 20px;
+        }
+
+        .doctor-card h5 {
+            color: #45c3d3;
+        }
+
+    .img-fit {
+        object-fit: cover;
+        max-width: 100%;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        height:240px;
+    }
+
+    .healthbook-card {
+        margin: 10px;
+        width: 300px;
+    }
+
+        .healthbook-card h3 {
+            font-size: 20px;
+            color: #000;
+            margin: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 25px;
+            text-align:left;
+            
+        }
+
+        .healthbook-card p {
+            text-align: left;
+             font-size: 16px; 
+            color: #333;
+        }
+
+    .healthbook-container .stage {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-register .container {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        max-width: 100%
+    }
+
+    .register-container {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .title-register {
+        display: flex;
+        align-items: center
+    }
+
+    .content {
+        padding: 16px 8px;
+    }
+
+    .footer-register {
+        background: -webkit-gradient(linear, left top, left bottom, from(rgba(72, 190, 230, .9))), url(https://bookingdoctor.vn/wp-content/themes/bkns/assets/images/footer-1.jpeg);
+        background-size: cover;
+        margin-top: 32px;
+    }
+
+    .dev-register {
+        display: flex;
+        align-items: center;
+    }
+
+    .register-input {
+        width: 320px;
+    }
+
+    .input-res {
+        width: 90%;
+        border-radius: 25px;
+        padding: 8px 16px;
+        background: hsla(0, 0%, 100%, .25);
+        border: 1px solid #00000000;
+        height: 45px;
+        color: #ffffff;
+    }
+
+    .register-input input::placeholder {
+        color: #ffffff;
+    }
+
+    .register-btn {
+        background: #00379b;
+        color: #ffffff;
+        border-radius: 25px;
+        padding: 8px 16px;
+        border: 1px solid #000000;
+        font-weight: bold;
+    }
+
+    .footer {
+        background: #e5f7ff;
+        padding: 30px 0 50px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+        .footer .footer-container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+        }
+
+        .footer .footer-address-box {
+            padding: 12px;
+            background: #a8dbf3;
+            min-width: 33%
+        }
+
+        .footer .footer-address {
+            box-shadow: #a8dbf3;
+            background: linear-gradient(90deg, #3789c4, #68c0e6);
+            display: flex;
+            align-items: flex-end;
+            border-bottom: 1px solid #fff;
+            padding: 12px;
+        }
+
+    .footer-address .icon {
+        border: 1px solid #ffffff;
+        border-radius: 9999px;
+        height: 32px;
+        width: 32px;
+        text-align: center;
+    }
+
+    .footer-address h6 {
+        color: #ffffff;
+        padding-left: 8px;
+        text-transform: uppercase;
+    }
+
+    .footer-contact-title h3 {
+        color: #27519e;
+        text-transform: uppercase;
+        font-size: 16px;
+        border-bottom: 2px solid #48bee6;
+    }
+
+    .footer-social a {
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        border-radius: 50%;
+        text-align: center;
+        color: #48bee6;
+        background: #fff
+    }
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+</style>
+
+<main>
+    @*PART 1: POPULAR SPECIALTIES*@
+    <div class="img-fluid">
+        <img src="https://bookingdoctor.vn/wp-content/uploads/2021/05/logo-y-te-suc-khoe-benh-vien.jpg" sizes="(max-width: 1000px) 100vw, 1000px " class="reponsive-img" />
+    </div>
+    <div class="specialties-container n">
+        <div class="home-title-container">
+            <div class="home-title">
+                <h3 style="text-transform:uppercase">popular specialties</h3>
+                <a href="@Url.Action("Index","Majors")" class="more-a">More</a>
+            </div>
+        </div>
+        
+        <div class="container mt-5">
+            <div class="carousel-container position-relative">
+                <button class="prev-btn" onclick="prevSlide()">&#10094;</button>
+                <div class="carousel overflow-hidden">
+                    <div class="row flex-nowrap no-gutters">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center major-container">
+                                <a href="@Url.Action("DoctorByMajor","Majors",new {major_ID = item.ID})">
+                                    <img src="~/Content/Image/major-image/@item.ImagePath" class="rounded-circle" />
+                                    <h3>@item.Name</h3>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <button class="next-btn" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    @*PART 2 : Doctor of the Week*@
+    <div class="doctor-container">
+        <div class="home-title-container">
+            <div class="home-title">
+                <h3 style="text-transform:uppercase">Doctor of the Week</h3>
+            </div>
+        </div>
+
+        <div class="stage">
+            <div class="row ">
+                @foreach (var item in users)
+                {
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center card table-bordered doctor-card">
+                        <a href="@Url.Action("Details", "Users", new { id = item.ID})">
+                            <img src="~/Content/Image/user-avatar/@item.ImagePath" class="img-fit" />
+                            <h3>@item.Fullname</h3>
+                            <p>@item.Description</p>
+                            <h5>@item.Email</h5>
+                        </a>
+                    </div>
+                }
+
+             
+            </div>
+        </div>
+    </div>
+
+    @*PART 3: health handbook*@
+    <div class="healthbook-container">
+        <div class="home-title-container">
+            <div class="home-title">
+                <h3 style="text-transform:uppercase">health handbook</h3>
+                <a href="" class="more-a">More</a>
+            </div>
+        </div>
+
+        <div class="stage">
+            <div class="row ">
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center card table-bordered healthbook-card">
+                    <a href="">
+                        <img src="~/Content/Image/healcard/02fdc4b1c1971c7bed5a712b6c6de67dce9fcb0e.jpg" class="img-fit" />
+                        <h3>Energy drinks: 8 dangerous effects that increase the risk of stroke and high mortality.</h3>
+                        <p>
+                            Red Bull energy drink is considered a beverage that contains many vitamins and provides numerous nutrients...
+
+                        </p>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center card table-bordered healthbook-card">
+                    <a href="">
+                        <img src="~/Content/Image/healcard/153258-bac-si-da-lieu-4-pixabay.jpg" class="img-fit" />
+                        <h3>
+                            In Vitro Fertilization (IVF) at Hanoi Andrology and Fertility Hospital
+                        </h3>
+                        <p>
+                            In vitro fertilization (IVF) is an assisted reproductive technology in which sperm and eggs are combined...
+                        </p>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center card table-bordered healthbook-card">
+                    <a href="">
+                        <img src="~/Content/Image/healcard/download-4.jpg" class="img-fit" />
+                        <h3>10 consequences of alcohol addiction on the body.</h3>
+                        <p>
+                            Alcohol and alcoholic beverages in general have numerous negative impacts on health...
+                        </p>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center card table-bordered healthbook-card">
+                    <a href="">
+                        <img src="~/Content/Image/healcard/images-1.jpg" class="img-fit" />
+                        <h3>
+                            Intestinal Fluke Disease: Clinical Symptoms and Treatment
+                        </h3>
+                        <p>
+                            The intestinal fluke is a large fluke (75x20 mm) that parasitizes the duodenum of...
+                        </p>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    
+</main>
+
+<script>
+    let currentSlide = 0;
+
+    function updateSlidePosition() {
+        const carousel = document.querySelector('.carousel .row');
+        const itemWidth = document.querySelector('.major-container').offsetWidth;
+        carousel.style.transform = `translateX(-${currentSlide * itemWidth}px)`;
+    }
+
+    function nextSlide() {
+        const totalItems = document.querySelectorAll('.major-container').length;
+        const itemsPerView = 4;
+        if (currentSlide < totalItems - itemsPerView) {
+            currentSlide++;
+        } else {
+            currentSlide = 0; // Loop back to the start
+        }
+        updateSlidePosition();
+    }
+
+    function prevSlide() {
+        const totalItems = document.querySelectorAll('.major-container').length;
+        const itemsPerView = 4;
+        if (currentSlide > 0) {
+            currentSlide--;
+        } else {
+            currentSlide = totalItems - itemsPerView; // Loop back to the end
+        }
+        updateSlidePosition();
+    }
+
+    // Initialize the carousel position
+    updateSlidePosition();
+
+</script>
